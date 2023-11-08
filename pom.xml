@@ -212,7 +212,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub maxxq.org Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/maxxq-org/maven</url>
+			<url>https://maven.pkg.github.com/maxxq-org</url>
 		</repository>
 	</distributionManagement>
 </project>
