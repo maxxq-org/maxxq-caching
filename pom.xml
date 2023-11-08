@@ -207,4 +207,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub maxxq.org Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/maxxq-org/maven</url>
+		</repository>
+	</distributionManagement>
 </project>
