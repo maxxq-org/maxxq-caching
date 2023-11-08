@@ -12,8 +12,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<java.version>8</java.version>
-		<java.version.target>8</java.version.target>
+		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<required.codecoverage>1.00</required.codecoverage>
 	</properties>
@@ -25,7 +24,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
-					<release>${java.version.target}</release>
+					<release>${java.version}</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -161,7 +160,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>3.1.0</version>
@@ -174,32 +173,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.14.0</version>
-				<configuration>
-					<complianceLevel>${java.version}</complianceLevel>
-					<source>1.${java.version}</source>
-					<target>1.${java.version.target}</target>
-					<showWeaveInfo>true</showWeaveInfo>
-					<verbose>true</verbose>
-					<Xlint>ignore</Xlint>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<!-- use this goal to weave all your main classes -->
-							<goal>compile</goal>
-							<!-- use this goal to weave all your test classes -->
-							<goal>test-compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</build>
 
@@ -207,11 +181,6 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.9.20.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
 			<version>1.9.20.1</version>
 		</dependency>
 		<dependency>
@@ -228,13 +197,13 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>5.6.0</version>
+			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>4.11.0</version>
+			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
