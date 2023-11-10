@@ -1,4 +1,4 @@
-# EE Core Caching
+# MaxxQ Caching
 
 This library provides the ability to put caching with annotations on libraries.
 The caching can be connected to the preferred caching library e.g. ehcache.
