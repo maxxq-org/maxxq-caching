@@ -9,7 +9,7 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.maxxq.maven</groupId>
+	<groupId>org.maxxq.caching</groupId>
 	<artifactId>maxxq-caching</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
