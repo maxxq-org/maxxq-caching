@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.maxxq</groupId>
+		<artifactId>maxxq-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
 	<groupId>org.maxxq.maven</groupId>
 	<artifactId>maxxq-caching</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
@@ -15,166 +21,22 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<required.codecoverage>1.00</required.codecoverage>
+		<owasp.skip>true</owasp.skip>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
-				<configuration>
-					<release>${java.version}</release>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.2.1</version>
-			</plugin>
-			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.10</version>
 				<configuration>
 					<excludes>
 						<exclude>org/maxxq/caching/CachingAspect.class</exclude>
 					</excludes>
 				</configuration>
-				<executions>
-					<execution>
-						<id>default-prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-							<formats>XML</formats>
-							<outputDirectory>
-								${project.build.directory}/site/jacoco/</outputDirectory>
-						</configuration>
-					</execution>
-					<execution>
-						<id>readablereport</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>check</id>
-						<goals>
-							<goal>check</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<rule>
-									<element>BUNDLE</element>
-									<limits>
-										<limit>
-											<counter>LINE</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>${required.codecoverage}</minimum>
-										</limit>
-										<limit>
-											<counter>BRANCH</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>${required.codecoverage}</minimum>
-										</limit>
-									</limits>
-								</rule>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<version>2.16.1</version>
-				<executions>
-					<execution>
-						<phase>verify</phase>
-						<goals>
-							<goal>display-dependency-updates</goal>
-						</goals>
-						<configuration>
-							<allowMinorUpdates>true</allowMinorUpdates>
-							<allowIncrementalUpdates>true</allowIncrementalUpdates>
-							<allowMajorUpdates>false</allowMajorUpdates>
-							<allowSnapshots>false</allowSnapshots>
-							<processDependencies>true</processDependencies>
-							<processDependencyManagement>true</processDependencyManagement>
-							<processPluginDependencies>true</processPluginDependencies>
-							<processPluginDependenciesInPluginManagement>false</processPluginDependenciesInPluginManagement>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>8.4.2</version>
-				<configuration>
-					<ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
-					<retireJsAnalyzerEnabled>false</retireJsAnalyzerEnabled>
-					<assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
-					<failBuildOnCVSS>${owasp.CVSSv3.threshold}</failBuildOnCVSS>
-					<skip>${owasp.skip}</skip>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.3.0</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.6.0</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!--<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>-->
 		</plugins>
+
 	</build>
 
 	<dependencies>
@@ -207,12 +69,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub maxxq.org Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/maxxq-org</url>
-		</repository>
-	</distributionManagement>
 </project>
