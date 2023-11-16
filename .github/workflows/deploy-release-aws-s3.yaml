@@ -1,9 +1,9 @@
-name: Deploy snapshot to Maven S3
+name: Deploy release version to Maven S3
 
 # Run workflow when the workflow to check the quality is completed
 on:
   push:
-    branches: [ master ]
+    branches: [ release/** ]
     
 jobs:
   publish-package:
@@ -14,5 +14,5 @@ jobs:
     with:
       java-version: '17'
       java-distribution: 'temurin'
-      maven-deployment-repo: 's3://repository.maven/snapshots'
+      maven-deployment-repo: 's3://repository.maven/releases'
     secrets: inherit
