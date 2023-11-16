@@ -10,9 +10,8 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: maxxq-org/maxxq-workflows/.github/workflows/maven-publish-s3.yml@main
+    uses: maxxq-org/maxxq-workflows/.github/workflows/maven-publish-release-s3.yml@main
     with:
       java-version: '17'
       java-distribution: 'temurin'
-      maven-deployment-repo: 's3://repository.maven/releases'
     secrets: inherit
