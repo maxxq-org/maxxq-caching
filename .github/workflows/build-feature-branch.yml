@@ -12,6 +12,7 @@ on:
 
   push:
     branches: [ "feature/**" ]
+  workflow_dispatch:
 
 jobs:
   build_java17:

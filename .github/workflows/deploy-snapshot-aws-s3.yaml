@@ -4,6 +4,7 @@ name: Deploy snapshot to Maven S3
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
     
 jobs:
   publish-package:
