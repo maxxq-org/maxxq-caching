@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<required.codecoverage>1.00</required.codecoverage>
 		<owasp.skip>false</owasp.skip>
-		<version.aspectj>1.9.21.2</version.aspectj>
+		<version.aspectj>1.9.22</version.aspectj>
 	</properties>
 
 	<build>
